@@ -1,0 +1,95 @@
+.containeer {
+	overflow: auto;
+}
+
+.main-containeer {
+	width: 800px;
+	margin: 0 auto;
+}
+
+#start {
+	width: 84px;
+	height: 128px;
+	background-image: url(images/start.jpg);
+	float: left;
+}
+
+#finish {
+	width: 160px;
+	height: 128px;
+	background-image: url(images/finish.jpg);
+	float: right;
+}
+
+.players {
+	height: 128px;
+	margin: 0 160px 0 84px;
+}
+
+.road {
+	height: 64px;
+	background-image: url(images/road.jpg);
+}
+
+#player-1 {
+	background-image: url(images/human-1.png);	
+}
+
+#player-2 {
+	background-image: url(images/human-2.png);	
+}
+
+.player {
+	width: 54px;
+	height: 54px;
+	position: relative;
+	left: 0;
+	top: 5px;
+}
+
+#controls {
+	padding: 10px 160px 0 84px;
+	height: 64px;
+}
+
+#questions {
+	height: 54px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: #FF7700;
+	color: white;
+	text-shadow: 1px 1px 2px black;
+	font: 28px courier;
+	line-height: 54px;
+	text-align: center;
+	width: 50%;
+	float: left;
+}
+
+#answer {
+	padding-left: 20px;
+	line-height: 54px;
+	margin-left: 50%;
+}
+
+#result {
+	height: 54px;
+	border: 2px solid black;
+	border-radius: 5px;
+	font: 28px courier;
+	line-height: 54px;
+	text-align: center;
+	padding: 0;
+}
+
+#gobtn {
+	height: 54px;
+	border: 2px solid black;
+	border-radius: 5px;
+	font: 28px courier;
+	background-color: #FF7700;
+	color: white;
+	display: inline-block;
+	line-height: 54px;
+}
+
