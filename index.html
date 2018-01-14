@@ -12,10 +12,10 @@
 			<div id="start"></div>
 			<div id="finish"></div>
 			<div class="containeer players">
-				<div class="road">
+				<div class="road" id="road-1">
 					<div class="player" id="player-1"></div>
 				</div>
-				<div class="road">
+				<div class="road" id="road-2">
 					<div class="player" id="player-2"></div>
 				</div>
 			</div>
@@ -23,10 +23,13 @@
 		<div id="controls" class="containeer">
 			<div id="questions">65 + 78</div>
 			<div id="answer">
-				<input type="text" id="result">
-				<input type="button" value="GO!" id="gobtn">
+				<input type="text" id="result" onkeypress="pressEnter(event)">
+				<input type="button" value="GO!" id="gobtn" onclick="enterAnswer()">
 			</div>
 		</div>
+	</div>
+	<div id="gameOverContainer">
+		<div id="gameOver"></div>
 	</div>
 </body>
 </html>
