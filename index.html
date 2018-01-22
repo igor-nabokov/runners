@@ -8,6 +8,16 @@
 </head>
 <body>
 	<div class="containeer" id="main-containeer">
+		<div id="head-menu">
+			<div id="player-select-container">
+				<select id="player-list"></select>
+				<input type="text" placeholder="Add new player" id="player-name">
+				<button id="addplayer" onclick="addNewPlayer()">ADD</button>
+			</div>
+			<div id="start-container">
+				<button id="startbtn" onclick="startGame()">START GAME</button>
+			</div>
+		</div>
 		<div class="containeer">
 			<div id="start"></div>
 			<div id="finish"></div>

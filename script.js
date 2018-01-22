@@ -1,4 +1,5 @@
-var player1, player2, questions, answer, result, gameOverContainer, gameOverMassage, timer;
+var player1, player2, questions, answer, result, gameOverContainer, gameOverMassage, timer, playerName, playerList;
+var running = false;
 
 function movePlayer(player, offset) {
 	player.style.left = (player.offsetLeft - player.parentNode.offsetLeft + offset) + "px";
@@ -59,6 +60,35 @@ function pressEnter(e) {
 	} 
 }
 
+function startGame () {
+	if (!running) {
+		timer = setInterval(function() {
+			movePlayer(player1, 1);
+		}, 50);
+		generateQuestion();
+		running = true;
+	}
+}
+
+function findPlayer (name) {
+	for (var i = 0; i < playerList.options.length; i++) {
+		if (playerList.options.item(i).text == name) {
+			return i;
+		}
+	}
+	return -1;	
+}
+
+function addNewPlayer () {
+	var name = playerName.value;
+	if (name != "" && findPlayer(name) < 0) {
+		var option = document.createElement("option");
+		option.text = name;
+		playerList.options.add(option);
+		playerList.options.selectedIndex = playerList.options.length - 1;
+	}
+}
+
 window.addEventListener("DOMContentLoaded", function () {
 	player1 = document.getElementById("player-1");
 	player2 = document.getElementById("player-2");
@@ -67,10 +97,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	gameOverMassage = document.getElementById("gameOver");
 	result = document.getElementById("result");
 	result.focus();
-		
-	timer = setInterval(function() {
-		movePlayer(player1, 1);
-	}, 50);
-	generateQuestion();
+	playerName = document.getElementById("player-name");
+	playerList = document.getElementById("player-list");
 });
 

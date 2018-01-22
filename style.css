@@ -111,3 +111,58 @@
 	display: none;
 	width: 100%;
 }
+
+#player-select-container {
+	float: right;
+	width: 40%;	
+	height: 100px;
+	line-height: 100px;
+	text-align: right;	
+}
+
+#start-container {
+	margin: 0 40%;
+	text-align: center;
+	height: 100px;
+	line-height: 100px;
+}
+
+#startbtn {
+	border: 2px solid black;
+	border-radius: 5px;
+	font: 28px courier;
+	background-color: #FF7700;
+	color: white;
+	display: inline-block;
+	line-height: 32px;
+}
+
+#addplayer {
+	border: 2px solid black;
+	border-radius: 5px;
+	font: 28px courier;
+	background-color: #FF7700;
+	color: white;
+	display: inline-block;
+	line-height: 32px;
+}
+
+#player-list  {
+	height: 36px;
+	border: 2px solid black;
+	border-radius: 5px;
+	font: 28px courier;
+	line-height: 36px;
+	padding: 0;
+	width: 150px;
+}
+
+#player-name {
+	height: 32px;
+	border: 2px solid black;
+	border-radius: 5px;
+	font: 28px courier;
+	line-height: 32px;
+	padding: 0;
+	width: 240px;
+}
