@@ -66,7 +66,7 @@ function pressEnter(e) {
 }
 
 function startGame () {
-	if (!running) {
+	if (!running && profiles.length > 0) {
 		timer = setInterval(function() {
 			movePlayer(player1, 1);
 		}, 100);
