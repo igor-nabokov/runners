@@ -1,4 +1,4 @@
-var player1, player2, questions, answer, result, gameOverContainer, gameOverMassage, timer, playerName, playerList;
+var player1, player2, questions, answer, result, gameOverContainer, gameOverMassage, timer, playerName, playerList, profiles, winsCountMassage, losesCountMassage;
 var running = false;
 
 function movePlayer(player, offset) {
@@ -10,11 +10,16 @@ function movePlayer(player, offset) {
 }
 
 function gameOver (player) {
+	var profile = profiles[playerList.options.selectedIndex];
 	if (player == player1) {
+		profile.loses++;
 		gameOverMassage.innerHTML = "You loose!";
 	} else {
 		gameOverMassage.innerHTML = "You win!";
+		profile.wins++;
 	} 
+	winsCountMassage.innerHTML = profile.wins;
+	losesCountMassage.innerHTML = profile.loses;
 	gameOverContainer.style.display = "block";
 	clearInterval(timer);
 }
@@ -47,7 +52,7 @@ function generateQuestion() {
 
 function enterAnswer() {
 	if (parseInt(result.value) == answer) {
-		movePlayer(player2, 20);
+		movePlayer(player2, 50);
 	}
 	result.value = "";
 	generateQuestion();
@@ -64,7 +69,7 @@ function startGame () {
 	if (!running) {
 		timer = setInterval(function() {
 			movePlayer(player1, 1);
-		}, 50);
+		}, 100);
 		generateQuestion();
 		running = true;
 	}
@@ -86,7 +91,26 @@ function addNewPlayer () {
 		option.text = name;
 		playerList.options.add(option);
 		playerList.options.selectedIndex = playerList.options.length - 1;
+		var profile = {
+			name: name, 
+			wins: 0,
+			loses: 0
+		};
+		profiles.push(profile);
 	}
+}
+
+function newPlayerEnter(e) {
+	if (e.keyCode == 13) {
+		addNewPlayer();
+	} 
+}
+
+function newGame () {
+	player1.style.left = 0;
+	player2.style.left = 0;
+	running = false;
+	gameOverContainer.style.display = "none";
 }
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -94,10 +118,27 @@ window.addEventListener("DOMContentLoaded", function () {
 	player2 = document.getElementById("player-2");
 	questions = document.getElementById("questions");	
 	gameOverContainer = document.getElementById("gameOverContainer");
-	gameOverMassage = document.getElementById("gameOver");
+	gameOverMassage = document.getElementById("result-txt");
+	winsCountMassage = document.getElementById("wins-count");
+	losesCountMassage = document.getElementById("loses-count");
 	result = document.getElementById("result");
 	result.focus();
 	playerName = document.getElementById("player-name");
 	playerList = document.getElementById("player-list");
+	profiles = localStorage.getItem("playersProfiles");
+	if (profiles != null) {
+		profiles = JSON.parse(profiles);
+	} else {
+		profiles = [];
+	}
+	for (var profile of profiles) {
+		var option = document.createElement("option");
+		option.text = profile.name;
+		playerList.options.add(option);
+	}
+});
+
+window.addEventListener("beforeunload", function () {
+	localStorage.setItem("playersProfiles", JSON.stringify(profiles));
 });
 

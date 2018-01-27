@@ -11,7 +11,7 @@
 		<div id="head-menu">
 			<div id="player-select-container">
 				<select id="player-list"></select>
-				<input type="text" placeholder="Add new player" id="player-name">
+				<input type="text" placeholder="Add new player" id="player-name" onkeypress="newPlayerEnter(event)">
 				<button id="addplayer" onclick="addNewPlayer()">ADD</button>
 			</div>
 			<div id="start-container">
@@ -31,15 +31,20 @@
 			</div>
 		</div>
 		<div id="controls" class="containeer">
-			<div id="questions">65 + 78</div>
 			<div id="answer">
 				<input type="text" id="result" onkeypress="pressEnter(event)">
 				<input type="button" value="GO!" id="gobtn" onclick="enterAnswer()">
 			</div>
+			<div id="questions">65 + 78</div>
 		</div>
 	</div>
 	<div id="gameOverContainer">
-		<div id="gameOver"></div>
+		<div id="gameOver">
+			<h1 id="result-txt"></h1>
+			<p class="player-info">WINS: <span id="wins-count"></span></p>
+			<p class="player-info">LOSES: <span id="loses-count"></span></p>
+			<div style="text-align: center;"><button onclick="newGame()" id="newGameBtn">NEW GAME</button></div>
+		</div>
 	</div>
 </body>
 </html>
